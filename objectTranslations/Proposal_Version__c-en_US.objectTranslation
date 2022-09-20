@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Enquiry Version</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Enquiry Versions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Clone This Version --></label>
+        <name>Clone_This_Version__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Of Products --></label>
+        <name>No_Of_Products__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Version Id --></label>
+        <name>Old_Version_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Proposal --></label>
+        <name>Proposal__c</name>
+        <relationshipLabel><!-- Enquiry Versions --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Amount --></label>
+        <name>TotalAmountRollup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Amount --></label>
+        <name>Total_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Version Name --></label>
+        <name>Version_Name__c</name>
+    </fields>
+    <layouts>
+        <layout>Proposal Version Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

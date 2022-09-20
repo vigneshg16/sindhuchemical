@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to confirm quote amount request was submitted</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Approval Request</name>
+    <style>none</style>
+    <subject>{!Proposal__c.Customer_Name__c}_{!Proposal__c.Enquiry_Date__c}</subject>
+    <textOnly>You submitted an quote amount approval request to your manager or delegated approver: {!User.Manager}.
+
+Enquiry Name
+{!Proposal__c.Name}
+
+Enquiry Date
+{!Proposal__c.Enquiry_Date__c}
+
+Quote Amount
+{!Proposal__c.Quoted_Amount__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

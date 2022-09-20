@@ -1,0 +1,12 @@
+<p>Hi , </p>
+
+<p>
+You are requested to approve below Outbound Entry record. Please click the below link to view more details and approve or Reject.
+</p>
+<br/>
+{!Outbound_Enquiry__c.Link}
+<br/>
+<p>
+
+thanks <br/>
+Operation Team </p>

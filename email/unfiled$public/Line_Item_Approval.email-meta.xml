@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Line Item Approval</name>
+    <style>none</style>
+    <subject>Supplier Enquiry Approval</subject>
+    <textOnly>Hi ,
+
+You are requested to approve below Outbound Entry record. Please click the below link to view more details and approve or Reject.
+
+
+{!Outbound_Enquiry__c.Link}
+
+thanks
+Operation Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

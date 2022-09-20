@@ -1,0 +1,43 @@
+<apex:page standardController="Proposal__c" extensions="ProposalHomeController">
+    <head>
+        <style> 
+            body { font-family: 'Helvetica'; }
+            .companyName { font: bold 30px; color: red; }  
+            p
+            {
+            font-size: 14pt;
+            }
+            
+            img {
+            max-width: 50%;
+            height: 50%;
+            }
+            
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        <apex:form >
+            <apex:commandButton styleClass="slds-button slds-button--neutral" value="Create Quotation" action="{!savePDF}"/>
+           <apex:pageBlock title="Enquiry Informtion">
+               <apex:pageBlockSection title="" showHeader="false" columns="2" Id="pageBlockSecId">
+                  <apex:inputField value="{!Proposal__c.Payment_Terms__c}">
+                    <apex:actionSupport event="onchange" action="{!onChangePT}" reRender="pageBlockSecId"  />
+                  </apex:inputField>
+                  <apex:inputField value="{!Proposal__c.Detail_Advace__c}" rendered="{!advanceCheck}"/>
+                  <apex:inputField value="{!Proposal__c.Detail_Advace__c}" rendered="{!advanceCheckRO}" html-disabled="true"/>
+                  <apex:inputField value="{!Proposal__c.Shipping_Location__c}"/>
+                  <apex:inputField value="{!Proposal__c.No_of_Days_Credit__c}" rendered="{!creditCheck}"/>
+                  <apex:inputField value="{!Proposal__c.No_of_Days_Credit__c}" rendered="{!creditCheckRO}" html-disabled="true"/>
+                  <apex:inputField value="{!Proposal__c.Lead_Time__c}"/>
+                  <apex:inputField value="{!Proposal__c.Number_of_Days_of_Check__c}" rendered="{!pdcCheck}"/>
+                  <apex:inputField value="{!Proposal__c.Number_of_Days_of_Check__c}" rendered="{!pdcCheckRO}" html-disabled="true"/>
+                  <apex:inputField value="{!Proposal__c.GSTIN__c}"/>
+               </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+        
+    </body>
+    </apex:page>
