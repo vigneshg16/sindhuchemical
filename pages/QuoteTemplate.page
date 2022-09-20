@@ -1,0 +1,264 @@
+<apex:page controller="ProposalHomeController" lightningStyleSheets="true"  renderAs="pdf">
+    <style>
+        .lookupInput a { 
+        border: none !important;
+        width: 60px !important ;
+        }
+        body
+        {
+        background:white !important;
+        }
+        
+        
+    </style>
+    <script>
+    function enableModel(loopId)
+    {
+        alert(loopId);
+        var element = document.getElementById('modalOne');
+        element.classList.add('slds-fade-in-open');        
+        element.classList.remove('slds-fade-in-close'); 
+        var element1 = document.getElementById('modalbg');
+        element1.classList.add('slds-backdrop_open');        
+        element1.classList.remove('slds-backdrop_close'); 
+        
+    }
+    function enableSuppModel()
+    {
+        //  callSupplierProds();
+    }
+    function disableModel()
+    {
+        var element = document.getElementById('modalOne');
+        element.classList.add('slds-fade-in-close');        
+        element.classList.remove('slds-fade-in-open');  
+        var element1 = document.getElementById('modalbg');
+        element1.classList.add('slds-backdrop_close');        
+        element1.classList.remove('slds-backdrop_open');  
+    }
+    
+    </script>
+    <apex:slds />
+    <apex:form id="theform" >
+        <apex:actionFunction action="{!fetchSupplierData}"   name="callSupplierProds" />
+        <apex:pageMessages ></apex:pageMessages>
+        <div class="slds-form">
+            <center>
+                <apex:commandButton value="Save Enquiry" action="{!saveProposal}"  styleClass="slds-button slds-button_brand" />
+                
+                <!--  <apex:commandButton value="Save New Version" action="{!saveProposal}"  styleClass="slds-button slds-button_success" /> -->
+                <apex:commandButton value="Cancel " action="{!saveProposal}"  styleClass="slds-button slds-button_destructive" />
+            </center>
+            <br/>
+            Current Version :  {!enquiryRec.Proposal_Version__r.Name}
+            <div class="slds-box" style="background:#18A2D5;color:white;">
+                <h3>
+                    <b>  Products Details  -{!enquiryRecordId} </b> 
+                </h3>
+                Amount: {!totalProposalAmount}
+            </div>
+            <div class="slds-form-element__control"  style="padding:5px;">
+                <apex:actionRegion >
+                    <apex:commandButton action="{!addProductItem}" reRender="productList" value="Add Product" styleClass="slds-button slds-button_success" />
+                    <apex:pageMessages ></apex:pageMessages>
+                    <br/>
+                    <apex:outputPanel id="productList">
+                        <div class="slds-box">
+                            
+                            <apex:repeat value="{!productitemsList}" var="row"  >
+                                
+                                
+                                <fieldset class="slds-form-element slds-form-element_compound">
+                                    
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__row" >
+                                            <div class="slds-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-01">Type </label>
+                                                    <div class="slds-form-element__control">
+                                                        
+                                                        <apex:inputField styleClass="slds-input" value="{!row.Product_Type__c}"   >
+                                                            
+                                                        </apex:inputField>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_1-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-01">Is Custom </label>
+                                                    <div class="slds-form-element__control">
+                                                        
+                                                        <apex:inputField value="{!row.Is_Custom_Product__c}"   >
+                                                            <apex:actionSupport event="onchange" reRender="productList" />
+                                                        </apex:inputField>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_2-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-01">Product Name</label>
+                                                    <div class="slds-form-element__control">                                                  
+                                                        <apex:inputField value="{!row.Name}" rendered="{!row.Is_Custom_Product__c}" styleClass="slds-input" />
+                                                        <apex:inputField value="{!row.Product__c}" rendered="{!!row.Is_Custom_Product__c}" styleClass="slds-input" />
+                                                    </div>
+                                                    <apex:outputPanel rendered="{!row.Is_Custom_Product__c}">
+                                                        <label class="slds-form-element__label" for="input-01">Description</label>
+                                                        <div class="slds-form-element__control">     
+                                                            <apex:inputField value="{!row.Product_Description__c}"  styleClass="slds-input" />
+                                                            
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_1-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-02">Quantity</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputField value="{!row.Quantity__c}" styleClass="slds-input" >
+                                                            <apex:actionSupport event="onchange" action="{!calculate}" reRender="productList" />
+                                                        </apex:inputField>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_1-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-02">Unit Price</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputField value="{!row.Unit_Price__c}" styleClass="slds-input" >
+                                                            <apex:actionSupport event="onchange" action="{!calculate}" reRender="productList" />
+                                                        </apex:inputField>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_1-of-12">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="input-02">Total Price</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:outputField value="{!row.Total_Price__c}" styleClass="slds-input" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-size_2-of-12" style="padding-top:20px;">
+                                                
+                                                <apex:commandLink action="{!saveProductItems}" oncomplete="enableModel('{!selectedProductItemId}');return true;" value=" Save & Add Supplier" >
+                                                    <apex:param name="LoopId" value="{!row.Id}" />
+                                                </apex:commandLink>
+                                                &nbsp;&nbsp;
+                                                <apex:commandLink action="{!removeProductItem}"  reRender="theform" value="Remove" >
+                                                    <apex:param name="RemoveId" value="{!row.Id}" />
+                                                </apex:commandLink>
+                                                
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </fieldset>
+                                
+                            </apex:repeat>
+                            <div class="slds-clearfix">
+                                <div class="slds-float_right" style="font-size:2em;">
+                                    Total Amount :  <b>{!totalProposalAmount} </b>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:actionRegion>
+            </div>
+        </div>
+    </apex:form>
+    <apex:outputPanel id="supplierModal" >
+        
+        <section id="modalOne" role="dialog" tabindex="-1" class="slds-modal slds-fade-in-close slds-modal_medium" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+            <div class="slds-modal__container">
+                
+                <apex:form id="modalForm">
+                    <apex:pageMessages ></apex:pageMessages>
+                    <header class="slds-modal__header">
+                        <button onclick="disableModel();" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                            X
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Find Supplier</h2>
+                        <br/>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="padding-top:10px;">
+                        
+                        Search 
+                        <apex:inputText styleClass="slds-input" value="{!searchTextSupplier}" />
+                        <apex:commandButton value="Search" action="{!fetchSupplierData}" reRender="modalForm"  styleClass="slds-button slds-button_brand" />
+                        
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Supplier Products results">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Select">Select</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Product Name">Product Name</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Supplier Name">Supplier Name</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Last Approved Amount">Last Approved Amount</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Last Approved Quantity">Last Approved Quantity</div>
+                                    </th>
+                                    <th class="" scope="col">
+                                        <div class="slds-truncate" title="Date">Date</div>
+                                    </th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!supplierProductsList}" var="rec" >
+                                    <tr class="slds-hint-parent">
+                                        <td data-label="Select">
+                                            <div class="slds-truncate" title="{!rec.Supplier__r.Name}">
+                                                <apex:inputField value="{!rec.Is_Selected__c}" />
+                                            </div>
+                                        </td>
+                                        <th data-label="product Name" scope="row">
+                                            <div class="slds-truncate" title="{!rec.name}">
+                                                <a href="#" tabindex="-1">{!rec.name}</a>
+                                            </div>
+                                        </th>
+                                        <td data-label="Supplier Name">
+                                            <div class="slds-truncate" title="{!rec.Supplier__r.Name}">{!rec.Supplier__r.Name}</div>
+                                        </td>
+                                        <td data-label="Last Approved Price">
+                                            <div class="slds-truncate" title="{!rec.Last_Approved_Price__c}">{!rec.Last_Approved_Price__c}</div>
+                                        </td>
+                                        <td data-label="Last Approved Quantity">
+                                            <div class="slds-truncate" title="{!rec.Last_Approved_Quantity__c}">{!rec.Last_Approved_Quantity__c}</div>
+                                        </td>
+                                        <td data-label="Date">
+                                            <div class="slds-truncate" title="{!rec.LastModifiedDate}">{!rec.LastModifiedDate}</div>
+                                        </td>
+                                        
+                                    </tr>
+                                </apex:repeat>
+                            </tbody>
+                        </table>
+                        
+                        
+                        
+                        
+                        <footer class="slds-modal__footer">
+                            <button onclick="disableModel();" class="slds-button slds-button_neutral">Cancel</button>
+                            
+                            <apex:commandButton styleClass="slds-button slds-button_brand" value="Save Suppliers" action="{!SaveSupplierproducts}" oncomplete="disableModel();" reRender="modalForm"  />
+                        </footer>
+                    </div>
+                    
+                </apex:form>  
+            </div>
+        </section>
+        <div id="modalbg" class="slds-backdrop slds-backdrop_close"></div>  
+        
+        
+    </apex:outputPanel>
+</apex:page>

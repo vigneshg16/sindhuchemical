@@ -1,0 +1,4 @@
+<apex:page lightningStyleSheets="true"  >
+   
+    <apex:enhancedList customizable="true" listId="{!$Label.CustomAccountListviewId}" type="Account" height="1000" />
+</apex:page>

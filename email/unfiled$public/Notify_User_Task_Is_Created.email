@@ -1,0 +1,10 @@
+Hello,
+
+A Task has been created under your name.
+Subject: {!Task.Subject}
+Due Date:{!Task.ActivityDate}
+
+You can use the below link to go to your task.
+{!Task.Link}
+
+Thanks!

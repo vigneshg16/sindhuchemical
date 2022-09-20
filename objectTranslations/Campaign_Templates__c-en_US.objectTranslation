@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Campaign Templates</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Campaign Templates</value>
+    </caseValues>
+    <fields>
+        <label><!-- Email Body --></label>
+        <name>Email_Body__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <layouts>
+        <layout>Campaign Templates Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Email Content --></label>
+            <section>Email Content</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

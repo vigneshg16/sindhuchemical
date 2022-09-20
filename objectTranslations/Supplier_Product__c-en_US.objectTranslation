@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Supplier Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Supplier Products</value>
+    </caseValues>
+    <fields>
+        <label><!-- Chemical Fullname --></label>
+        <name>Chemical_Fullname__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chemical Name For Long --></label>
+        <name>Chemical_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Selected --></label>
+        <name>Is_Selected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Approved Price --></label>
+        <name>Last_Approved_Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Approved Quantity --></label>
+        <name>Last_Approved_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Terms --></label>
+        <name>Payment_Terms__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Supplier Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Quotation Received Per Unit --></label>
+        <name>Quotation_Received_Per_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shipping Location --></label>
+        <name>Shipping_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Supplier --></label>
+        <name>Supplier__c</name>
+        <relationshipLabel><!-- Supplier Products --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

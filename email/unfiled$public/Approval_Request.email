@@ -1,0 +1,14 @@
+You submitted an quote amount approval request to your manager or delegated approver: {!User.Manager}. 
+<br/><br/>
+<span style="font-weight:bold;">Enquiry Name</span>
+<br/>
+{!Proposal__c.Name}
+<br/><br/>
+<span style="font-weight:bold;">Enquiry Date</span>
+<br/>
+{!Proposal__c.Enquiry_Date__c}
+<br/><br/>
+<span style="font-weight:bold;">Quote Amount</span>
+<br/>
+{!Proposal__c.Quoted_Amount__c}
+<br/>

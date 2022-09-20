@@ -1,0 +1,90 @@
+<apex:page controller="campaignEmailController"  lightningStyleSheets="true" >
+    <style>
+        .lookupInput a { 
+        border: none !important;
+        width: 60px !important ;
+        }
+    </style>
+    <apex:slds />
+    <div class="slds-page-header" style="background:#09A58E;color:white;">
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity" title="Campaign">
+                          
+                            <span class="slds-assistive-text">Campaign  </span>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Rohde Corp - 80,000 Widgets">Campaign Emails</span>
+                                </h1>
+                            </div>
+                        </div>
+                        <p class="slds-page-header__name-meta">Email marketing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="slds-box">
+        <div style="padding:10px;">
+            <apex:form >
+                <label>Select the Template </label>
+                <div class="slds-form-element__control">
+                    <apex:inputField value="{!opp.Campaign_Templates__c}" styleClass="slds-input">
+                        <apex:actionSupport action="{!loadTemplate}" event="onchange" />
+                    </apex:inputField>
+                </div>
+                <apex:pageMessages ></apex:pageMessages>
+                <apex:outputPanel rendered="{!isShowContent}">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_4-of-6">
+                            <div style="color:blue;font-size:2em;">
+                                
+                                <center><h3>
+                                   Email Template Preview
+                                    </h3></center>
+                            </div>
+                            <div class="slds-box">  
+                                
+                                <apex:outputText escape="false" value="{!temp.Email_Body__c}" ></apex:outputText>>
+                            </div>
+                           
+                        </div>
+                        <div class="slds-col slds-size_2-of-6">
+                             <div class="slds-box">
+                                 <label> Email Groups  To:</label> <br/>
+                                <apex:selectList styleClass="slds-input" value="{!selectedEmailGroup}" size="1" multiselect="false">
+                                	
+                                    <apex:selectOption itemLabel="--None--" itemValue="none" ></apex:selectOption>
+                                    <apex:selectOptions value="{!emailGroupOptions}"></apex:selectOptions>
+                                    <apex:actionSupport action="{!loadGroupEmails}" event="onchange" />
+                                </apex:selectList>
+                                 <apex:inputTextarea disabled="true" rendered="{!selectedEmailGroup != null && selectedEmailGroup !='none'}" rows="3" value="{!selectedEmailIds}" styleClass="slds-input" ></apex:inputTextarea> 
+                                 <br/>
+                                 <label> Additional To:</label>
+                                <apex:inputTextarea html-placeholder="Please enter emailId in comma seperated" value="{!toAddressList}" rows="3" styleClass="slds-input" ></apex:inputTextarea>
+                                 <br/>
+                                 <label> CC Addresses:</label>
+                                <apex:inputText html-placeholder="Please enter emailId in comma seperated" value="{!CCAddressList}" styleClass="slds-input" ></apex:inputText>
+                                 <br/>
+                                 <label> Email Subject:</label>
+                                <apex:inputText html-placeholder="Please enter emailId in comma seperated" value="{!emailsubject}" styleClass="slds-input" ></apex:inputText>
+                                 <br/>
+                                 <br/>
+                                <apex:commandButton styleClass="slds-button slds-button_brand" value="Send Email" action="{!sendEmailtoGroups}" />
+                            </div>
+                        </div>
+                    </div>
+                   
+                </apex:outputPanel>
+            
+            </apex:form>
+        </div>
+    </div>
+</apex:page>

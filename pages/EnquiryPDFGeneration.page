@@ -1,0 +1,235 @@
+<apex:page standardController="Proposal__c" extensions="ProposalHomeController" renderAs="pdf" >
+    <head>
+        <style> 
+            body { font-family: 'Helvetica'; }
+            .companyName { font: bold 30px; color: red; }  
+            p
+            {
+            font-size: 12pt;
+            }
+            
+            img {
+            max-width: 50%;
+            height: 50%;
+            }
+            
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        
+        <apex:panelGrid columns="1" width="100%">
+            <table style="border:2px solid #ccc;" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        
+                        <table style="border:1px solid #ccc;" layout="fixed">
+                            <tr>
+                                <td width="30%" style="vertical-align:top;" >
+                                    <img height="70" src="/servlet/servlet.FileDownload?file=0155e000000vSCo" /> <br/>
+                                </td>
+                                <td width="40%" style="font-size:12pt;vertical-align:top;padding-left:10px;">
+                                    
+                                    Flat no. 201, 2nd Floor, Sri Sai Ram Residency, <br/>
+                                    1079, 5th A Main Road, Gokula 1st Stage,2nd  <br/>
+                                    Phase, Bangalore - 560054  <br/>
+                                    GSTIN-29ABACS4583L1ZR  <br/>
+                                    Phone - 08023476666/65  <br/>
+                                    Email ID - Info@sindhuchem.com
+                                </td>
+                                <td width="30%" style="text-align:center;font-size:12pt;color:red;vertical-align:top;"> QUOTATION</td>
+                            </tr>
+                        </table>
+                        <table style="border:1px solid #ccc;" width="100%"  cellpadding="0" cellspacing="0" >
+                            <tr >
+                                <td width="50%" style="border-right:2px solid #ccc;"> 
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%">
+                                                Quotation#
+                                            </td>
+                                            <td width="50%">
+                                                <b> :{!quotationNumber}</b>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%">
+                                                Quotation Date
+                                            </td>
+                                            <td width="50%">
+                                                <b> :{!todayDate}
+                                                    
+                                                </b>
+                                            </td>
+                                        </tr>   
+                                    </table>
+                                    
+                                </td> 
+                                <td width="50%" style="vertical-align:top;">
+                                    <table>
+                                        <tr>
+                                            <td width="50%">
+                                                Place of Supply:
+                                            </td>
+                                            <td width="50%">
+                                                <b>{!enquiryRec.Place_Of_Supply__c}</b>   
+                                            </td>
+                                        </tr>
+                                        
+                                    </table>
+                                    
+                                </td>
+                                
+                            </tr>
+                        </table>
+                        <table style="border:1px solid #ccc;" width="100%"  cellpadding="0" cellspacing="0" >
+                            <tr >
+                                <td width="50%" style="border-right:2px solid #ccc;"> 
+                                    <div style="font-size:12pt;background:#2B95F8;color:white;">
+                                        <b> Bill To </b> 
+                                    </div>
+                                    <div style="padding:5px;">
+                                        
+                                        <span style="font-size:12pt;">
+                                           <b>{!enquiryRec.Customer_Name__c} </b> <br/>                                            
+                                            {!enquiryRec.Street__c} <br/>
+                                            {!enquiryRec.City__c}  <br/>
+                                            {!enquiryRec.State__c},{!enquiryRec.Country__c} <br/>
+                                            Company Website:  {!enquiryRec.Company_Website__c} <br/>                                           
+                                            GSTIN : {!enquiryRec.GSTIN__c} <br/>
+                                            Contact Person : {!enquiryRec.Primary_Contact_Person__c}<br/>
+                                            Email ID : {!enquiryRec.Primary_Email__c} <br/>
+                                            Phone : {!enquiryRec.Phone__c}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td width="50%" style="border-right:2px solid #ccc;vertical-align:top;"> 
+                                    <div style="font-size:12pt;background:#2B95F8;color:white;">
+                                        <b> Ship To </b> 
+                                    </div>
+                                    <div style="padding:5px;">
+                                        
+                                        <span style="font-size:12pt;">
+                                            {!enquiryRec.Customer_Or_Supplier__r.ShippingStreet} <br/>
+                                            {!enquiryRec.Customer_Or_Supplier__r.ShippingCity}<br/>
+                                            {!enquiryRec.Customer_Or_Supplier__r.ShippingState},
+                                            {!enquiryRec.Customer_Or_Supplier__r.ShippingCountry}  -
+                                            {!enquiryRec.Customer_Or_Supplier__r.ShippingPostalCode}  <br/>
+                                            
+                                            Phone : {!enquiryRec.Phone__c}
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                         <apex:variable var="count" value="{!1}" />
+                           
+                        <table style="border:1px solid #ccc;font-size:12pt;" width="100%" border="2" cellpadding="0" cellspacing="0">
+                            <tr style="background:#2B95F8;color:white;font-size:12pt;">
+                                <th width="5%">#</th>
+                                <th width="20%">Item &amp; Description</th>
+                                <th width="20%">HSN/SAC</th>
+                                <th width="10%">Qty</th>
+                                <th width="10%">Rate</th>
+                                <th width="10%">Total</th>
+                                <th width="10%">GST%</th>
+                                <th width="15%">Total Price with GST</th>
+                            </tr>
+                           
+                            <apex:repeat value="{!productitemsList}" var="row"   >
+                                <tr style="font-size:12pt;">
+                                    <td>
+                                        {!count}
+                                    </td>
+                                    <td>
+                                        {!row.Product__r.Name} <br/> {!row.Product_Description__c}
+                                    </td>
+                                    <td>
+                                        
+                                        {!row.Product_Type__c}
+                                    </td>
+                                    <td>
+                                        {!row.Quantity__c}&nbsp;{!row.UOM__c}
+                                    </td>
+                                    <td>                                    
+                                        <apex:outputField value="{!row.Unit_Price__c}" styleClass="slds-input" />
+                                    </td>
+                                    <td>
+                                        <apex:outputField value="{!row.Total_Price__c}" styleClass="slds-input" />
+                                    </td>
+                                    <td>
+                                    <apex:outputField value="{!row.GST__c}" styleClass="slds-input" />
+                                    </td>
+                                    <td>
+                                    <apex:outputField value="{!row.Total_Price_with_GST__c}" styleClass="slds-input" />
+                                    </td>
+                                </tr>
+                                 <apex:variable var="count" value="{!count+1}" />
+                            </apex:repeat>
+                            
+                        </table>
+                    </td>
+                </tr><tr>
+                <td>
+                    <div style="float:right;">
+                        Total Amount :  <b>
+                        {!totalProposalAmount}
+                        <!-- <apex:outputText value="{0, Number}">
+<apex:param value="{!totalProposalAmount}" />
+
+</apex:outputText>  -->
+                        </b>
+                    </div>
+                    <div style="font-size:12pt;">
+                        <br/>
+                        Total Amount <br/>
+                        <b><i>  {!amountInString}</i> </b>
+                    </div>
+                    <div style="font-size:12pt;">
+                        <br/>
+                        Terms &amp; Condtions: <br/>
+                        Payments Terms : <b> {!enquiryRec.Payment_Terms__c}</b> <br/>
+                        Payments Details : <b> {!enquiryRec.Detail_Advace__c} {!enquiryRec.No_of_Days_Credit__c} {!enquiryRec.Number_of_Days_of_Check__c} </b> <br/>
+                        Shipping Location : <b>{!enquiryRec.Shipping_Location__c}</b> <br/>
+                        Lead Time : <b> {!enquiryRec.Lead_Time__c}</b> <br/>
+                    </div>
+                    <div style="font-size:12pt;">
+                        <br/>
+                        Looking forward for your business.
+                    </div>
+                    <div style="font-size:12pt;">
+                        <br/>
+                        <table width="100%">
+                            <tr>
+                                <td width="65%">
+                                    <br/>
+                                    <b> Bank Details: <br/>
+                                        Account Number: 37764731483 <br/>
+                                        Beneficiary: Sindhu Speciality Chemicals (I) Pvt. Ltd. <br/>
+                                        With Bank: SBI, 361/1089,1st Stage,2nd Phase,Gokula Extn,HMT main <br/>
+                                        road,Bangalore-560054. <br/>
+                                        IFSC code: SBIN0060338 <br/> </b> 
+                                </td>
+                                <td width="35%" > 
+                                    <center>
+                                        For Sindhu Speciality Chemicals (I) Pvt. Ltd.
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        Authorized Signature</center>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </td>
+                </tr>
+            </table>
+            
+            
+        </apex:panelGrid>
+    </body>
+</apex:page>
