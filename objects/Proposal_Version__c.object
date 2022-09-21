@@ -153,16 +153,47 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Enquiry Version</label>
-    <nameField>
-        <displayFormat>Version - {00}</displayFormat>
-        <label>Proposal Version Name</label>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>Enquiry Versions</pluralLabel>
-    <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
-    <visibility>Public</visibility>
+    <fields>
+        <fullName>Clone_This_Version__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Clone This Version</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>No_Of_Products__c</fullName>
+        <externalId>false</externalId>
+        <label>No Of Products</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_Version_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>Old Version Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Proposal__c</fullName>
+        <externalId>false</externalId>
+        <label>Proposal</label>
+        <referenceTo>Proposal__c</referenceTo>
+        <relationshipName>Proposal_Versions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
     <fields>
         <fullName>Status__c</fullName>
         <externalId>false</externalId>
@@ -198,16 +229,14 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Proposal__c</fullName>
+        <fullName>TotalAmountRollup__c</fullName>
         <externalId>false</externalId>
-        <label>Proposal</label>
-        <referenceTo>Proposal__c</referenceTo>
-        <relationshipName>Proposal_Versions</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <label>Total Amount</label>
+        <summarizedField>Product_Items__c.Total_Price__c</summarizedField>
+        <summaryForeignKey>Product_Items__c.Proposal_Version__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>Summary</type>
     </fields>
     <fields>
         <fullName>Total_Amount__c</fullName>
@@ -228,43 +257,14 @@
         <trackTrending>false</trackTrending>
         <type>AutoNumber</type>
     </fields>
-    <fields>
-        <fullName>No_Of_Products__c</fullName>
-        <externalId>false</externalId>
-        <label>No Of Products</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Old_Version_Id__c</fullName>
-        <externalId>true</externalId>
-        <label>Old Version Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>TotalAmountRollup__c</fullName>
-        <externalId>false</externalId>
-        <label>Total Amount</label>
-        <summarizedField>Product_Items__c.Total_Price__c</summarizedField>
-        <summaryForeignKey>Product_Items__c.Proposal_Version__c</summaryForeignKey>
-        <summaryOperation>sum</summaryOperation>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>Clone_This_Version__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Clone This Version</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
+    <label>Enquiry Version</label>
+    <nameField>
+        <displayFormat>Version - {00}</displayFormat>
+        <label>Proposal Version Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Enquiry Versions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
 </CustomObject>

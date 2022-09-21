@@ -159,18 +159,33 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Quotation</label>
-    <nameField>
-        <displayFormat>Quote-{0000}</displayFormat>
-        <label>Quotation Name</label>
+    <fields>
+        <fullName>Enquiry__c</fullName>
+        <externalId>false</externalId>
+        <label>Enquiry</label>
+        <referenceTo>Proposal__c</referenceTo>
+        <relationshipLabel>Quotations</relationshipLabel>
+        <relationshipName>Quotations</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
-    </nameField>
-    <pluralLabel>Quotations</pluralLabel>
-    <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
-    <visibility>Public</visibility>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Quoted_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Quoted Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
     <fields>
         <fullName>Status__c</fullName>
         <externalId>false</externalId>
@@ -207,31 +222,16 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <fields>
-        <fullName>Enquiry__c</fullName>
-        <externalId>false</externalId>
-        <label>Enquiry</label>
-        <referenceTo>Proposal__c</referenceTo>
-        <relationshipLabel>Quotations</relationshipLabel>
-        <relationshipName>Quotations</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+    <label>Quotation</label>
+    <nameField>
+        <displayFormat>Quote-{0000}</displayFormat>
+        <label>Quotation Name</label>
         <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>Quoted_Amount__c</fullName>
-        <externalId>false</externalId>
-        <label>Quoted Amount</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Quotations</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
 </CustomObject>
