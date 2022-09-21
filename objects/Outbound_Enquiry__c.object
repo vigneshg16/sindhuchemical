@@ -159,17 +159,18 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Outbound Enquiry</label>
-    <nameField>
-        <label>Outbound Enquiry Name</label>
+    <fields>
+        <fullName>Alias_Product_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Alias Product Name</label>
+        <length>255</length>
+        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
         <type>Text</type>
-    </nameField>
-    <pluralLabel>Outbound Enquirys</pluralLabel>
-    <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
+        <unique>false</unique>
+    </fields>
     <fields>
         <fullName>Amount__c</fullName>
         <externalId>false</externalId>
@@ -181,6 +182,176 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Describe_Others__c</fullName>
+        <externalId>false</externalId>
+        <label>Describe Others</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Enquiry__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Enquiry</label>
+        <referenceTo>Proposal__c</referenceTo>
+        <relationshipLabel>Outbound Enquirys</relationshipLabel>
+        <relationshipName>Outbound_Enquirys</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Fright_Chages__c</fullName>
+        <externalId>false</externalId>
+        <label>Fright Chages</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Paid</fullName>
+                    <default>false</default>
+                    <label>Paid</label>
+                </value>
+                <value>
+                    <fullName>To Pay</fullName>
+                    <default>false</default>
+                    <label>To Pay</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>No_of_Days_for_Credit__c</fullName>
+        <externalId>false</externalId>
+        <label>No of Days for Credit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Terms__c</fullName>
+        <externalId>false</externalId>
+        <label>Payment Terms</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Advance</fullName>
+                    <default>false</default>
+                    <label>Advance</label>
+                </value>
+                <value>
+                    <fullName>Credit</fullName>
+                    <default>false</default>
+                    <label>Credit</label>
+                </value>
+                <value>
+                    <fullName>Others</fullName>
+                    <default>false</default>
+                    <label>Others</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Items__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product Items</label>
+        <referenceTo>Product_Items__c</referenceTo>
+        <relationshipLabel>Outbound Enquirys</relationshipLabel>
+        <relationshipName>Outbound_Enquirys</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quotation_Received_Per_Unit__c</fullName>
+        <externalId>false</externalId>
+        <label>Quotation Received Per Unit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Quoted_Price_to_Customer__c</fullName>
+        <externalId>false</externalId>
+        <label>Quoted Price to Customer</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Shipping_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Shipping Location</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Status__c</fullName>
@@ -233,42 +404,18 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Enquiry__c</fullName>
+        <fullName>Supplier_Product__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Enquiry</label>
-        <referenceTo>Proposal__c</referenceTo>
+        <label>Enquired Product</label>
+        <referenceTo>Supplier_Product__c</referenceTo>
         <relationshipLabel>Outbound Enquirys</relationshipLabel>
         <relationshipName>Outbound_Enquirys</relationshipName>
         <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Comments__c</fullName>
-        <externalId>false</externalId>
-        <label>Comments</label>
-        <length>32768</length>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Quantity__c</fullName>
-        <externalId>false</externalId>
-        <label>Quantity</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Supplier__c</fullName>
@@ -284,164 +431,22 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>Fright_Chages__c</fullName>
-        <externalId>false</externalId>
-        <label>Fright Chages</label>
-        <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Paid</fullName>
-                    <default>false</default>
-                    <label>Paid</label>
-                </value>
-                <value>
-                    <fullName>To Pay</fullName>
-                    <default>false</default>
-                    <label>To Pay</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Payment_Terms__c</fullName>
-        <externalId>false</externalId>
-        <label>Payment Terms</label>
-        <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Advance</fullName>
-                    <default>false</default>
-                    <label>Advance</label>
-                </value>
-                <value>
-                    <fullName>Credit</fullName>
-                    <default>false</default>
-                    <label>Credit</label>
-                </value>
-                <value>
-                    <fullName>Others</fullName>
-                    <default>false</default>
-                    <label>Others</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Product_Items__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Product Items</label>
-        <referenceTo>Product_Items__c</referenceTo>
-        <relationshipLabel>Outbound Enquirys</relationshipLabel>
-        <relationshipName>Outbound_Enquirys</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Describe_Others__c</fullName>
-        <externalId>false</externalId>
-        <label>Describe Others</label>
-        <length>255</length>
-        <required>false</required>
+    <label>Outbound Enquiry</label>
+    <nameField>
+        <label>Outbound Enquiry Name</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Supplier_Product__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Enquired Product</label>
-        <referenceTo>Supplier_Product__c</referenceTo>
-        <relationshipLabel>Outbound Enquirys</relationshipLabel>
-        <relationshipName>Outbound_Enquirys</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Shipping_Location__c</fullName>
-        <externalId>false</externalId>
-        <label>Shipping Location</label>
-        <length>255</length>
-        <required>false</required>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Alias_Product_Name__c</fullName>
-        <externalId>false</externalId>
-        <label>Alias Product Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>No_of_Days_for_Credit__c</fullName>
-        <externalId>false</externalId>
-        <label>No of Days for Credit</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Quoted_Price_to_Customer__c</fullName>
-        <externalId>false</externalId>
-        <label>Quoted Price to Customer</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Quotation_Received_Per_Unit__c</fullName>
-        <externalId>false</externalId>
-        <label>Quotation Received Per Unit</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackFeedHistory>true</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
+    </nameField>
+    <pluralLabel>Outbound Enquirys</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Already_One_Supplier_Approved</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISCHANGED(Status__c  ) &amp;&amp;  ISPICKVAL(Status__c  , &apos;Approved&apos;) &amp;&amp;  Product_Items__r.Is_Approved__c =&apos;Approved&apos;</errorConditionFormula>
+        <errorMessage>Already this Product Item approved for another Supplier Quote.</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>Quote_receieved_Validation</fullName>
         <active>true</active>
@@ -452,10 +457,5 @@
 3.Landed Cost
 4.Shipping Location</errorMessage>
     </validationRules>
-    <validationRules>
-        <fullName>Already_One_Supplier_Approved</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISCHANGED(Status__c  ) &amp;&amp;  ISPICKVAL(Status__c  , &apos;Approved&apos;) &amp;&amp;  Product_Items__r.Is_Approved__c =&apos;Approved&apos;</errorConditionFormula>
-        <errorMessage>Already this Product Item approved for another Supplier Quote.</errorMessage>
-    </validationRules>
+    <visibility>Public</visibility>
 </CustomObject>

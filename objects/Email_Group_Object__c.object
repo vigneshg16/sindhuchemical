@@ -159,15 +159,6 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Email Group Object</label>
-    <nameField>
-        <label>Group Name</label>
-        <type>Text</type>
-    </nameField>
-    <pluralLabel>Email Group Objects</pluralLabel>
-    <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
     <fields>
         <fullName>IsActive__c</fullName>
         <defaultValue>false</defaultValue>
@@ -185,4 +176,13 @@
         <trackTrending>false</trackTrending>
         <type>Summary</type>
     </fields>
+    <label>Email Group Object</label>
+    <nameField>
+        <label>Group Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Email Group Objects</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
 </CustomObject>

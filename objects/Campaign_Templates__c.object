@@ -153,16 +153,16 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Campaign Templates</label>
-    <nameField>
-        <label>Campaign Templates Name</label>
+    <fields>
+        <fullName>Email_Body__c</fullName>
+        <externalId>false</externalId>
+        <label>Email Body</label>
+        <length>131072</length>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
-    </nameField>
-    <pluralLabel>Campaign Templates</pluralLabel>
-    <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
-    <visibility>Public</visibility>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>50</visibleLines>
+    </fields>
     <fields>
         <fullName>Subject__c</fullName>
         <externalId>false</externalId>
@@ -174,14 +174,14 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>Email_Body__c</fullName>
-        <externalId>false</externalId>
-        <label>Email Body</label>
-        <length>131072</length>
+    <label>Campaign Templates</label>
+    <nameField>
+        <label>Campaign Templates Name</label>
         <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Html</type>
-        <visibleLines>50</visibleLines>
-    </fields>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Campaign Templates</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
 </CustomObject>
